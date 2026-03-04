@@ -1,554 +1,558 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>21 Days Challenge · Muslim Tracker</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21 days · Muslim challenge tracker</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-        }
-        body {
-            background: linear-gradient(145deg, #f8f5f0 0%, #eef1e6 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.2rem;
-        }
-        .challenge-card {
-            max-width: 1000px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 2.5rem;
-            box-shadow: 0 25px 45px -10px rgba(40, 35, 20, 0.25),
-                        0 2px 8px rgba(0,0,0,0.03),
-                        inset 0 1px 4px rgba(255,255,255,0.8);
-            padding: 2.2rem 2rem 2.5rem;
-            border: 1px solid rgba(255,255,240,0.6);
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:
+          "Segoe UI",
+          Roboto,
+          system-ui,
+          -apple-system,
+          sans-serif;
+      }
+      body {
+        background: linear-gradient(145deg, #f8f5f0 0%, #eef1e6 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.2rem;
+      }
+      .challenge-card {
+        max-width: 1000px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 2.5rem;
+        box-shadow:
+          0 25px 45px -10px rgba(40, 35, 20, 0.25),
+          0 2px 8px rgba(0, 0, 0, 0.03),
+          inset 0 1px 4px rgba(255, 255, 255, 0.8);
+        padding: 2.2rem 2rem 2.5rem;
+        border: 1px solid rgba(255, 255, 240, 0.6);
+      }
 
-        /* header area with date & live stamp */
-        .top-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            gap: 0.8rem 1.5rem;
-        }
-        .title-section h1 {
-            font-size: 2.1rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            color: #2b4a3f;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .title-section h1 span {
-            background: #1f3b32;
-            color: #f1f7e8;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-        }
-        .date-badge {
-            background: #fffef7;
-            border-radius: 60px;
-            padding: 0.6rem 1.7rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            border: 1px solid #dad7ca;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-        }
-        .date-badge .day-number {
-            background: #b5aa8e;
-            color: white;
-            border-radius: 50px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        .date-badge input[type="date"] {
-            border: none;
-            background: transparent;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #2c3e34;
-            border-bottom: 2px dashed #c0b9a6;
-            padding: 0.2rem 0.1rem;
-            outline: none;
-            cursor: pointer;
-        }
-        .progress-ring {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        .progress-badge {
-            background: #4a6b5b;
-            color: white;
-            border-radius: 50px;
-            padding: 0.4rem 1.2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .progress-badge span {
-            background: #fffaec;
-            color: #1f3b32;
-            border-radius: 30px;
-            padding: 0.15rem 0.7rem;
-            margin-left: 0.3rem;
-        }
+      .top-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        gap: 0.8rem 1.5rem;
+      }
+      .title-section h1 {
+        font-size: 2.1rem;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        color: #2b4a3f;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .title-section h1 span {
+        background: #1f3b32;
+        color: #f1f7e8;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.2rem 1rem;
+        border-radius: 40px;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+      .date-badge {
+        background: #fffef7;
+        border-radius: 60px;
+        padding: 0.6rem 1.7rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        border: 1px solid #dad7ca;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+      }
+      .date-badge .day-number {
+        background: #b5aa8e;
+        color: white;
+        border-radius: 50px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+      .date-badge input[type="date"] {
+        border: none;
+        background: transparent;
+        font-weight: 500;
+        font-size: 1rem;
+        color: #2c3e34;
+        border-bottom: 2px dashed #c0b9a6;
+        padding: 0.2rem 0.1rem;
+        outline: none;
+        cursor: pointer;
+      }
+      .progress-ring {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      .progress-badge {
+        background: #4a6b5b;
+        color: white;
+        border-radius: 50px;
+        padding: 0.4rem 1.2rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .progress-badge span {
+        background: #fffaec;
+        color: #1f3b32;
+        border-radius: 30px;
+        padding: 0.15rem 0.7rem;
+        margin-left: 0.3rem;
+      }
 
-        /* grid layout for tasks */
-        .tasks-grid {
-            display: grid;
-            grid-template-columns: 1fr 0.4fr 0.4fr 0.25fr;
-            align-items: center;
-            background: #f9f7f1;
-            border-radius: 32px;
-            padding: 1rem 1.8rem 1rem 2rem;
-            margin-bottom: 0.6rem;
-            font-weight: 600;
-            color: #3d584b;
-            border: 1px solid #e2ddcf;
-        }
-        .tasks-grid span:not(.check-placeholder) {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-        }
-        .task-row {
-            display: grid;
-            grid-template-columns: 1fr 0.4fr 0.4fr 0.25fr;
-            align-items: center;
-            background: white;
-            border-radius: 40px;
-            padding: 0.75rem 1.8rem 0.75rem 2rem;
-            margin: 0.6rem 0;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.02);
-            border: 1px solid #ede9dd;
-            transition: all 0.15s;
-        }
-        .task-row:hover {
-            border-color: #b7ad93;
-            background: #fefcf7;
-            box-shadow: 0 8px 15px rgba(90, 75, 50, 0.08);
-        }
-        .task-name {
-            font-weight: 500;
-            color: #1f3b2f;
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .task-name .hint {
-            font-size: 0.8rem;
-            background: #eae3d3;
-            padding: 0.2rem 0.7rem;
-            border-radius: 40px;
-            color: #4d5f4a;
-            font-weight: 400;
-            white-space: nowrap;
-        }
-        .weekly-tag {
-            color: #846f4f;
-            font-size: 0.9rem;
-            font-weight: 400;
-            background: #f3efe7;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            text-align: center;
-            display: inline-block;
-            width: fit-content;
-        }
-        .check-daily, .check-custom {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        /* custom checkboxes */
-        .checkbox-wrapper {
-            display: flex;
-            gap: 0.4rem;
-            align-items: center;
-            justify-content: flex-start;
-        }
-        .checkbox-wrapper input[type="checkbox"] {
-            width: 1.3rem;
-            height: 1.3rem;
-            accent-color: #3f7a5c;
-            transform: scale(1.1);
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        .checkbox-wrapper label {
-            font-size: 0.8rem;
-            color: #3b4d3e;
-        }
-        .streak-badge {
-            background: #ecd9bf;
-            border-radius: 30px;
-            padding: 0.3rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #3a2f1f;
-            white-space: nowrap;
-        }
+      .tasks-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.4fr 0.4fr 0.25fr;
+        align-items: center;
+        background: #f9f7f1;
+        border-radius: 32px;
+        padding: 1rem 1.8rem 1rem 2rem;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+        color: #3d584b;
+        border: 1px solid #e2ddcf;
+      }
+      .tasks-grid span:not(.check-placeholder) {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
+      .task-row {
+        display: grid;
+        grid-template-columns: 1fr 0.4fr 0.4fr 0.25fr;
+        align-items: center;
+        background: white;
+        border-radius: 40px;
+        padding: 0.75rem 1.8rem 0.75rem 2rem;
+        margin: 0.6rem 0;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02);
+        border: 1px solid #ede9dd;
+        transition: all 0.15s;
+      }
+      .task-row:hover {
+        border-color: #b7ad93;
+        background: #fefcf7;
+        box-shadow: 0 8px 15px rgba(90, 75, 50, 0.08);
+      }
+      .task-name {
+        font-weight: 500;
+        color: #1f3b2f;
+        font-size: 1.05rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .task-name .hint {
+        font-size: 0.8rem;
+        background: #eae3d3;
+        padding: 0.2rem 0.7rem;
+        border-radius: 40px;
+        color: #4d5f4a;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .weekly-tag {
+        color: #846f4f;
+        font-size: 0.9rem;
+        font-weight: 400;
+        background: #f3efe7;
+        padding: 0.2rem 0.8rem;
+        border-radius: 30px;
+        text-align: center;
+        display: inline-block;
+        width: fit-content;
+      }
+      .check-daily,
+      .check-custom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .checkbox-wrapper {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .checkbox-wrapper input[type="checkbox"] {
+        width: 1.3rem;
+        height: 1.3rem;
+        accent-color: #3f7a5c;
+        transform: scale(1.1);
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .checkbox-wrapper label {
+        font-size: 0.8rem;
+        color: #3b4d3e;
+      }
+      .streak-badge {
+        background: #ecd9bf;
+        border-radius: 30px;
+        padding: 0.3rem 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #3a2f1f;
+        white-space: nowrap;
+      }
 
-        /* footer & reset */
-        .action-bar {
-            margin-top: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-        }
-        .reset-btn {
-            background: none;
-            border: 2px solid #b3a68b;
-            color: #4e5d48;
-            font-weight: 600;
-            padding: 0.6rem 2rem;
-            border-radius: 60px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.15s;
-            background: #f5efe6;
-        }
-        .reset-btn:hover {
-            background: #dacfb8;
-            color: #253b2d;
-            border-color: #8d9d85;
-        }
-        .save-hint {
-            color: #5f7259;
-            background: #e8e2d3;
-            padding: 0.5rem 1.4rem;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .signature {
-            text-align: right;
-            font-size: 0.9rem;
-            color: #8f8a78;
-            margin-top: 1rem;
-            font-style: italic;
-        }
-        .signature a {
-            color: #4f735b;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        hr {
-            border: none;
-            border-top: 2px dotted #d6cfbc;
-            margin: 1.8rem 0 1rem;
-        }
+      .action-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+      }
+      .reset-btn {
+        background: none;
+        border: 2px solid #b3a68b;
+        color: #4e5d48;
+        font-weight: 600;
+        padding: 0.6rem 2rem;
+        border-radius: 60px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.15s;
+        background: #f5efe6;
+      }
+      .reset-btn:hover {
+        background: #dacfb8;
+        color: #253b2d;
+        border-color: #8d9d85;
+      }
+      .save-hint {
+        color: #5f7259;
+        background: #e8e2d3;
+        padding: 0.5rem 1.4rem;
+        border-radius: 60px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .signature {
+        text-align: right;
+        font-size: 0.9rem;
+        color: #8f8a78;
+        margin-top: 1rem;
+        font-style: italic;
+      }
+      .signature a {
+        color: #4f735b;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      hr {
+        border: none;
+        border-top: 2px dotted #d6cfbc;
+        margin: 1.8rem 0 1rem;
+      }
     </style>
-</head>
-<body>
-<div class="challenge-card">
-    <!-- HEADER with dynamic date and day counter -->
-    <div class="top-header">
+  </head>
+  <body>
+    <div class="challenge-card">
+      <div class="top-header">
         <div class="title-section">
-            <h1>🌙 21·challenge <span>guts</span></h1>
+          <h1>🌙 21·challenge <span>guts</span></h1>
         </div>
         <div class="date-badge" id="dateBadge">
-            <div class="day-number" id="dayDisplay">1</div>
-            <input type="date" id="datePicker" value="">
+          <div class="day-number" id="dayDisplay">1</div>
+          <input type="date" id="datePicker" value="" />
         </div>
         <div class="progress-ring">
-            <div class="progress-badge" id="progressSummary">
-                ⏳ done <span id="doneCount">0</span>/9
-            </div>
+          <div class="progress-badge" id="progressSummary">
+            ⏳ done <span id="doneCount">0</span>/9
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Column headers (matching the image style) -->
-    <div class="tasks-grid">
+      <div class="tasks-grid">
         <span>Task (with details)</span>
-        <span class="weekly-tag" style="background:transparent; padding:0;">Daily / wkly</span>
-        <span class="check-placeholder" style="text-align:center;">✅ done?</span>
-        <span style="text-align:center;">📆 streak</span>
-    </div>
+        <span class="weekly-tag" style="background: transparent; padding: 0"
+          >Daily / wkly</span
+        >
+        <span class="check-placeholder" style="text-align: center"
+          >✅ done?</span
+        >
+        <span style="text-align: center">📆 streak</span>
+      </div>
 
-    <!-- TASK LIST (dynamically generated but we keep static html with JS binding) -->
-    <div id="tasksContainer"></div>
+      <div id="tasksContainer"></div>
 
-    <!-- Additional footer: reset & save to localStorage -->
-    <hr>
-    <div class="action-bar">
-        <button class="reset-btn" id="resetToday">⟲ reset today's checks</button>
+      <hr />
+      <div class="action-bar">
+        <button class="reset-btn" id="resetToday">
+          ⟲ reset today's checks
+        </button>
         <div class="save-hint">
-            <span>💾 auto‑saved daily</span>
-            <span>🕌 @deenya.x</span>
+          <span>💾 auto‑saved daily</span>
+          <span>🕌 @deenya.x</span>
         </div>
+      </div>
+      <div class="signature">
+        ⏱️ 90min digital detox · 2–3L water ·
+        <a href="#" onclick="return false;">#21dayswithguts</a>
+      </div>
     </div>
-    <div class="signature">
-        ⏱️ 90min digital detox · 2–3L water · <a href="#" onclick="return false;">#21dayswithguts</a>
-    </div>
-</div>
 
-<script>
-    (function() {
-        // ---- task definitions (exactly from image, with daily/weekly semantics) ----
+    <script>
+      (function () {
         const tasks = [
-            { name: "Tahajjud (at least 2 rak’ah)", frequency: "twice a week", hasSecondary: false, weeklyLimit: 2 },
-            { name: "Wake for Fajr & stay awake (no back sleep)", frequency: "daily", hasSecondary: false },
-            { name: "Digital detox: 90min no phone after waking", frequency: "daily", hasSecondary: false },
-            { name: "Hydration goal: water after each Salah", frequency: "daily (~2.5-3L)", hasSecondary: false },
-            { name: "Qur’an connection: 1 page + translation", frequency: "daily", hasSecondary: false },
-            { name: "Sunnah prayers + 5 fardh", frequency: "daily", hasSecondary: false },
-            { name: "Gratitude journal: 3 things", frequency: "daily", hasSecondary: false },
-            { name: "Physical activity: 5k-7k steps / 20-30min", frequency: "daily", hasSecondary: false },
-            { name: "Learning: 30min islamic + 30min skill", frequency: "daily", hasSecondary: false }
+          {
+            name: "Tahajjud (at least 2 rak’ah)",
+            frequency: "twice a week",
+            hasSecondary: false,
+            weeklyLimit: 2,
+          },
+          {
+            name: "Wake for Fajr & stay awake (no back sleep)",
+            frequency: "daily",
+            hasSecondary: false,
+          },
+          {
+            name: "Digital detox: 90min no phone after waking",
+            frequency: "daily",
+            hasSecondary: false,
+          },
+          {
+            name: "Hydration goal: water after each Salah",
+            frequency: "daily (~2.5-3L)",
+            hasSecondary: false,
+          },
+          {
+            name: "Qur’an connection: 1 page + translation",
+            frequency: "daily",
+            hasSecondary: false,
+          },
+          {
+            name: "Sunnah prayers + 5 fardh",
+            frequency: "daily",
+            hasSecondary: false,
+          },
+          {
+            name: "Gratitude journal: 3 things",
+            frequency: "daily",
+            hasSecondary: false,
+          },
+          {
+            name: "Physical activity: 5k-7k steps / 20-30min",
+            frequency: "daily",
+            hasSecondary: false,
+          },
+          {
+            name: "Learning: 30min islamic + 30min skill",
+            frequency: "daily",
+            hasSecondary: false,
+          },
         ];
 
-        // ---- global variables ----
-        let currentDate = new Date().toISOString().split('T')[0];  // YYYY-MM-DD
-        let dayNumber = 1;  // will be computed based on days since start or based on date picker
-        let checks = {};    // key: taskIndex_date (or weekly special)
-        // for weekly tasks we store an array of booleans per week (we keep it simple: just one check per day, but we need to count if twice a week)
-        // we'll implement weekly twice logic by allowing check only, but visual feedback with count.
-        // we also need 'daily' checkboxes, but the weekly one will show a small counter
+        let currentDate = new Date().toISOString().split("T")[0];
+        let dayNumber = 1;
+        let checks = {};
+        const tasksContainer = document.getElementById("tasksContainer");
+        const datePicker = document.getElementById("datePicker");
+        const dayDisplay = document.getElementById("dayDisplay");
+        const doneSpan = document.getElementById("doneCount");
+        const resetBtn = document.getElementById("resetToday");
 
-        // ---- DOM elements ----
-        const tasksContainer = document.getElementById('tasksContainer');
-        const datePicker = document.getElementById('datePicker');
-        const dayDisplay = document.getElementById('dayDisplay');
-        const doneSpan = document.getElementById('doneCount');
-        const resetBtn = document.getElementById('resetToday');
-
-        // ---- helper: load from localStorage ----
         function loadAllChecks() {
-            const stored = localStorage.getItem('21dayMuslimChecks');
-            if (stored) {
-                try {
-                    checks = JSON.parse(stored) || {};
-                } catch (e) {
-                    checks = {};
-                }
-            } else {
-                checks = {};
+          const stored = localStorage.getItem("21dayMuslimChecks");
+          if (stored) {
+            try {
+              checks = JSON.parse(stored) || {};
+            } catch (e) {
+              checks = {};
             }
-            // ensure we have an object
-            if (!checks || typeof checks !== 'object') checks = {};
+          } else {
+            checks = {};
+          }
+          if (!checks || typeof checks !== "object") checks = {};
         }
 
-        // save to localStorage
         function persistChecks() {
-            localStorage.setItem('21dayMuslimChecks', JSON.stringify(checks));
+          localStorage.setItem("21dayMuslimChecks", JSON.stringify(checks));
         }
 
-        // get key for a task on a given date (YYYY-MM-DD)
         function getCheckKey(taskIdx, dateStr) {
-            return `task_${taskIdx}_${dateStr}`;
+          return `task_${taskIdx}_${dateStr}`;
         }
 
-        // get weekly progress count for task0 (tahajjud) for current week (simple: count checks in last 7 days)
-        // but easier: since we only check per day, we can count days in current week from monday? simpler: just count within last 7 days from selected date.
         function getWeeklyDoneCount(taskIdx, baseDateStr) {
-            if (taskIdx !== 0) return null; // only for tahajjud
-            const baseDate = new Date(baseDateStr + 'T12:00:00'); // noon to avoid timezone issues
-            let count = 0;
-            // go back 6 days + today = 7 days total
-            for (let i = 0; i < 7; i++) {
-                const d = new Date(baseDate);
-                d.setDate(d.getDate() - i);
-                const y = d.getFullYear();
-                const m = String(d.getMonth() + 1).padStart(2,'0');
-                const day = String(d.getDate()).padStart(2,'0');
-                const dateKey = `${y}-${m}-${day}`;
-                const checkKey = getCheckKey(taskIdx, dateKey);
-                if (checks[checkKey] === true) count++;
-            }
-            return count;
+          if (taskIdx !== 0) return null;
+          const baseDate = new Date(baseDateStr + "T12:00:00");
+          let count = 0;
+          for (let i = 0; i < 7; i++) {
+            const d = new Date(baseDate);
+            d.setDate(d.getDate() - i);
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, "0");
+            const day = String(d.getDate()).padStart(2, "0");
+            const dateKey = `${y}-${m}-${day}`;
+            const checkKey = getCheckKey(taskIdx, dateKey);
+            if (checks[checkKey] === true) count++;
+          }
+          return count;
         }
 
-        // render all tasks based on currentDate
         function renderTable() {
-            if (!tasksContainer) return;
-            let htmlStr = '';
-            let totalCheckedToday = 0;
+          if (!tasksContainer) return;
+          let htmlStr = "";
+          let totalCheckedToday = 0;
 
-            for (let i = 0; i < tasks.length; i++) {
-                const t = tasks[i];
-                const isWeekly = (i === 0); // only index 0 is twice-a-week
-                const key = getCheckKey(i, currentDate);
-                const isChecked = checks[key] === true;
+          for (let i = 0; i < tasks.length; i++) {
+            const t = tasks[i];
+            const isWeekly = i === 0;
+            const key = getCheckKey(i, currentDate);
+            const isChecked = checks[key] === true;
 
-                // for daily tasks, if checked → increment counter
-                if (!isWeekly && isChecked) totalCheckedToday++;
-                if (isWeekly && isChecked) totalCheckedToday++; // still counts as done for today (we'll manage weekly separately)
+            if (!isWeekly && isChecked) totalCheckedToday++;
+            if (isWeekly && isChecked) totalCheckedToday++;
 
-                // compute weekly progress for tahajjud
-                let weeklyBadge = '';
-                if (isWeekly) {
-                    const doneThisWeek = getWeeklyDoneCount(i, currentDate);
-                    const left = Math.max(0, 2 - doneThisWeek);
-                    weeklyBadge = `<span class="streak-badge" style="background:#e7dcc9;">📊 ${doneThisWeek}/2 this week</span>`;
-                } else {
-                    // simple streak not implemented, but we show a placeholder
-                    weeklyBadge = `<span class="streak-badge" style="background:#f2ecdd; opacity:0.8;">⚡ daily</span>`;
-                }
-
-                // frequency display column
-                let freqDisplay = t.frequency;
-                if (i === 0) freqDisplay = 'twice / week';
-
-                // Build row
-                htmlStr += `<div class="task-row" data-task-index="${i}">`;
-                htmlStr += `<div class="task-name">${t.name} <span class="hint">${i===3?'💧':''}${i===4?'📖':''}</span></div>`;
-                htmlStr += `<div class="weekly-tag" style="background:#efe6d8; color:#4e5b47;">${freqDisplay}</div>`;
-                // checkbox column
-                htmlStr += `<div class="check-daily">`;
-                htmlStr += `<div class="checkbox-wrapper">`;
-                htmlStr += `<input type="checkbox" class="task-check" data-idx="${i}" id="chk_${i}" ${isChecked ? 'checked' : ''}>`;
-                if (isWeekly) {
-                    htmlStr += `<label for="chk_${i}">✓ mark today</label>`;
-                } else {
-                    htmlStr += `<label for="chk_${i}">done</label>`;
-                }
-                htmlStr += `</div>`;
-                htmlStr += `</div>`;
-                // streak / weekly column
-                htmlStr += `<div style="text-align:center;">${weeklyBadge}</div>`;
-                htmlStr += `</div>`;
+            let weeklyBadge = "";
+            if (isWeekly) {
+              const doneThisWeek = getWeeklyDoneCount(i, currentDate);
+              const left = Math.max(0, 2 - doneThisWeek);
+              weeklyBadge = `<span class="streak-badge" style="background:#e7dcc9;">📊 ${doneThisWeek}/2 this week</span>`;
+            } else {
+              weeklyBadge = `<span class="streak-badge" style="background:#f2ecdd; opacity:0.8;">⚡ daily</span>`;
             }
 
-            tasksContainer.innerHTML = htmlStr;
+            let freqDisplay = t.frequency;
+            if (i === 0) freqDisplay = "twice / week";
 
-            // update total done today (excluding weekly logic, but we counted only daily + weekly counts if checked)
-            // but weekly should also reflect properly: we counted if checked, fine.
-            // re-count exactly from current dom checkboxes to be safe
-            const checkboxes = document.querySelectorAll('.task-check');
-            let realCount = 0;
-            checkboxes.forEach(cb => {
-                if (cb.checked) realCount++;
+            htmlStr += `<div class="task-row" data-task-index="${i}">`;
+            htmlStr += `<div class="task-name">${t.name} <span class="hint">${i === 3 ? "💧" : ""}${i === 4 ? "📖" : ""}</span></div>`;
+            htmlStr += `<div class="weekly-tag" style="background:#efe6d8; color:#4e5b47;">${freqDisplay}</div>`;
+            htmlStr += `<div class="check-daily">`;
+            htmlStr += `<div class="checkbox-wrapper">`;
+            htmlStr += `<input type="checkbox" class="task-check" data-idx="${i}" id="chk_${i}" ${isChecked ? "checked" : ""}>`;
+            if (isWeekly) {
+              htmlStr += `<label for="chk_${i}">✓ mark today</label>`;
+            } else {
+              htmlStr += `<label for="chk_${i}">done</label>`;
+            }
+            htmlStr += `</div>`;
+            htmlStr += `</div>`;
+            htmlStr += `<div style="text-align:center;">${weeklyBadge}</div>`;
+            htmlStr += `</div>`;
+          }
+
+          tasksContainer.innerHTML = htmlStr;
+
+          const checkboxes = document.querySelectorAll(".task-check");
+          let realCount = 0;
+          checkboxes.forEach((cb) => {
+            if (cb.checked) realCount++;
+          });
+          doneSpan.innerText = realCount;
+
+          document.querySelectorAll(".task-check").forEach((cb) => {
+            cb.addEventListener("change", function (e) {
+              const idx = this.dataset.idx;
+              const checked = this.checked;
+              const key = getCheckKey(idx, currentDate);
+              if (checked) {
+                checks[key] = true;
+              } else {
+                delete checks[key];
+              }
+              persistChecks();
+
+              const totalNow = document.querySelectorAll(
+                ".task-check:checked",
+              ).length;
+              doneSpan.innerText = totalNow;
+
+              if (parseInt(idx) === 0) {
+                const doneThisWeek = getWeeklyDoneCount(0, currentDate);
+                const badgeSpan = document.querySelector(
+                  `.task-row[data-task-index="0"] .streak-badge`,
+                );
+                if (badgeSpan) {
+                  badgeSpan.innerHTML = `📊 ${doneThisWeek}/2 this week`;
+                }
+              }
             });
-            doneSpan.innerText = realCount;
-
-            // attach event listeners to checkboxes
-            document.querySelectorAll('.task-check').forEach(cb => {
-                cb.addEventListener('change', function(e) {
-                    const idx = this.dataset.idx;
-                    const checked = this.checked;
-                    const key = getCheckKey(idx, currentDate);
-                    if (checked) {
-                        checks[key] = true;
-                    } else {
-                        delete checks[key]; // remove if unchecked
-                    }
-                    persistChecks();
-
-                    // update total display and weekly special badge
-                    const totalNow = document.querySelectorAll('.task-check:checked').length;
-                    doneSpan.innerText = totalNow;
-
-                    // re-render the weekly badge for task0 (index 0) to reflect updated count without full re-render? better refresh row0 only.
-                    // simplest: update the weekly badge text for index 0
-                    if (parseInt(idx) === 0) {
-                        const doneThisWeek = getWeeklyDoneCount(0, currentDate);
-                        const badgeSpan = document.querySelector(`.task-row[data-task-index="0"] .streak-badge`);
-                        if (badgeSpan) {
-                            badgeSpan.innerHTML = `📊 ${doneThisWeek}/2 this week`;
-                        }
-                    }
-                    // also we might update daily for others, but no need.
-                });
-            });
+          });
         }
 
-        // ---- update day number from date (1..21 assumption: but we can just show day of month? but challenge day based on start? we set to day of month cyclic, but simpler: days since 1st of month? better show day of selected date)
         function updateDayNumber() {
-            const selected = new Date(currentDate + 'T12:00:00');
-            // just for visual: day of month, but we can set as challenge day (cycle 1-21)
-            // let's make it challenge day (just pick a base: we reset each month but okay)
-            // we use a custom day counter based on unix day? easier: show the day of month capped at 21 (just for design)
-            const dayOfMonth = selected.getDate();
-            // but challenge could be any, we keep it in 1..21 (if day>21 wrap? we cap)
-            let displayDay = dayOfMonth > 21 ? (dayOfMonth % 21) || 1 : dayOfMonth;
-            if (displayDay === 0) displayDay = 1;
-            dayDisplay.innerText = displayDay;
+          const selected = new Date(currentDate + "T12:00:00");
+
+          const dayOfMonth = selected.getDate();
+          let displayDay = dayOfMonth > 21 ? dayOfMonth % 21 || 1 : dayOfMonth;
+          if (displayDay === 0) displayDay = 1;
+          dayDisplay.innerText = displayDay;
         }
 
-        // set datePicker to currentDate and update dayNumber
         function syncDatePicker() {
-            datePicker.value = currentDate;
-            updateDayNumber();
+          datePicker.value = currentDate;
+          updateDayNumber();
         }
 
-        // handle date change
         function onDateChange(e) {
-            const newDate = e.target.value;
-            if (!newDate) return;
-            currentDate = newDate;
-            // reload checks from storage (already have checks global)
-            loadAllChecks();  // keep existing checks
-            // rerender tasks for new date
-            renderTable();
-            updateDayNumber();
-            persistChecks(); // not needed but for safety
+          const newDate = e.target.value;
+          if (!newDate) return;
+          currentDate = newDate;
+          loadAllChecks();
+          renderTable();
+          updateDayNumber();
+          persistChecks();
         }
 
-        // reset today's checks (uncheck all for current date)
         function resetToday() {
-            // remove all keys for current date
-            const keysToRemove = [];
-            for (let key in checks) {
-                if (key.endsWith(currentDate)) {  // keys like task_0_2025-03-04
-                    keysToRemove.push(key);
-                }
+          const keysToRemove = [];
+          for (let key in checks) {
+            if (key.endsWith(currentDate)) {
+              keysToRemove.push(key);
             }
-            keysToRemove.forEach(k => delete checks[k]);
-            persistChecks();
-            renderTable();  // re-render
+          }
+          keysToRemove.forEach((k) => delete checks[k]);
+          persistChecks();
+          renderTable();
         }
 
-        // ---- initial load ----
         function init() {
-            loadAllChecks();
+          loadAllChecks();
 
-            // set default datepicker to today
-            const today = new Date().toISOString().split('T')[0];
-            currentDate = today;
-            datePicker.value = today;
-            updateDayNumber();
+          const today = new Date().toISOString().split("T")[0];
+          currentDate = today;
+          datePicker.value = today;
+          updateDayNumber();
 
-            renderTable();
+          renderTable();
 
-            // event listener
-            datePicker.addEventListener('change', onDateChange);
-            resetBtn.addEventListener('click', resetToday);
+          datePicker.addEventListener("change", onDateChange);
+          resetBtn.addEventListener("click", resetToday);
         }
 
         init();
-    })();
-</script>
-</body>
+      })();
+    </script>
+  </body>
 </html>
